@@ -67,10 +67,10 @@ $categorias = CategoriasControlador::ctrMostrarCategorias(null,null);
 </div> <!-- /.modal -->
 
 
-<div class="modal" id="editar-categoria" tabindex="-1" role="dialog" aria-labelledby="modal-block-large" aria-hidden="true">
+<div class="modal" id="editar_categoria" tabindex="" role="dialog" aria-labelledby="modal-block-large" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <form id="editarCategoria" method="POST" enctype="multipart/form-data" >       
+            <form id="editarCategoria" method="POST" enctype="multipart/form-data">       
                 <div class="block block-rounded block-themed block-transparent mb-0">
                     <div class="block-header bg-primary-dark">
                         <h3 class="block-title">Editar Categoria</h3>
@@ -86,13 +86,14 @@ $categorias = CategoriasControlador::ctrMostrarCategorias(null,null);
                         <div class="col-lg-5 col-mb-6"> 
                         <div class="mb-4">
                         <label class="form-label" for="val-username">Nombre</label>
-                        <input type="text" class="form-control nombre-categoria"  name="editar_nombre_categoria"  >
+                        <input type="text" class="form-control nombre_categoria"  name="editar_nombre_categoria">
                         </div>
                     </div>      
                 </div> 
+                    <input type="hidden" class="editar_id_categoria" name="editar_id_categoria" value="">
                     <?php
-                    $agregarUsuario = new UsuariosControlador();
-                    $agregarUsuario->ctrAgregarUsuario();
+                    $editarCategoria = new CategoriasControlador();
+                    $editarCategoria->ctrEditarCategoria(); 
                     ?> 
                 <div class="block-content block-content-full text-end bg-body">
                     <button type="button" class="btn btn-sm btn-alt-secondary" data-bs-dismiss="modal">Cancelar</button>

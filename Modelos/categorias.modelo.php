@@ -65,7 +65,26 @@ MOSTRAR DATOS
             return "Error: " . $e->getMessage();
         }
     }
+   
 
+      
+    static public function mdlEditarCategoria($tabla, $datos)
+    {
+        try {
+            $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET 
+            nombre_categoria = :nombre_categoria 
+            WHERE id_categoria = :id_categoria"); 
+            $stmt->bindParam(":nombre_categoria", $datos["nombre_categoria"], PDO::PARAM_STR);
+            $stmt->bindParam(":id_categoria", $datos["id_categoria"], PDO::PARAM_INT);
+            if ($stmt->execute()) {
+                return "ok";
+            } else {
+                return print_r(Conexion::conectar()->errorInfo());
+            }
+        } catch (Exception $e) {
+            return "Error: " . $e->getMessage();
+        }
+    }
 
 
 

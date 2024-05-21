@@ -1,9 +1,5 @@
 <!-- Dynamic Table Responsive -->
 <?php 
-require_once './controladores/productos.controlador.php';
-require_once './modelos/productos.modelo.php';
-require_once './controladores/categorias.controlador.php';
- 
 
 $categorias = CategoriasControlador::ctrMostrarCategorias(null, null); 
 #print_r($categorias);
@@ -13,8 +9,6 @@ $marcas = MarcasControlador::ctrMostrarMarcas(null,null);
 
 $estados = Funciones::MostrarEstados(null,null); 
 
-
-$categoriass= CategoriasControlador::ctrobtenerNombreCategoria(1);  
 
 ?> 
 
@@ -161,80 +155,81 @@ $categoriass= CategoriasControlador::ctrobtenerNombreCategoria(1);
                         </button>
                         </div>
                     </div>   
-                </div> 
-                <div class="row justify-content-center">
-                    <div class="col-lg-5 col-mb-6"> 
-                     <div class="mb-4">
-                       <label class="form-label" for="val-username">Nombre</label>
-                       <input type="text" class="form-control nombre_producto"  name="editar_nombre_producto" placeholder="" >
-                     </div>
-                    </div>
-                    <div class="col-lg-5 col-mb-6">
-                    <div class="mb-4">
-                      <label class="form-label" for="val-currency">Precio</label>
-                      <input type="text" class="form-control precio_producto" id="val-currency" name="editar_precio_producto" placeholder="" >
-                    </div>
-                    </div>
                 </div>
-                <div class="row justify-content-center">
-                    <div class="col-lg-11 col-mb-12">
+                <div class="block-content">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5 col-mb-6"> 
                         <div class="mb-4">
-                        <label class="form-label" for="val-suggestions">Descripción del producto</label>
-                        <textarea class="form-control descripcion_producto" id="val-suggestions" name="editar_descripcion_producto" rows="5" placeholder="" ></textarea>
-                        </div>       
+                        <label class="form-label" for="val-username">Nombre</label>
+                        <input type="text" class="form-control nombre_producto"  name="editar_nombre_producto" placeholder="" >
+                        </div>
+                        </div>
+                        <div class="col-lg-5 col-mb-6">
+                        <div class="mb-4">
+                        <label class="form-label" for="val-currency">Precio</label>
+                        <input type="text" class="form-control precio_producto" id="val-currency" name="editar_precio_producto" placeholder="" >
+                        </div>
+                        </div>
                     </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-lg-4">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-11 col-mb-12">
+                            <div class="mb-4">
+                            <label class="form-label" for="val-suggestions">Descripción del producto</label>
+                            <textarea class="form-control descripcion_producto" id="val-suggestions" name="editar_descripcion_producto" rows="5" placeholder="" ></textarea>
+                            </div>       
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-lg-4">
+                            <div class="mb-4">
+                            <label class="form-label" for="val-select2">Marcas </label>
+                                <select class="form-select valid" id="marca" name="editar_marca_producto" style="width: 100%;" >
+                                    <option>Seleccione una Marca</option>
+                                    <?php foreach($marcas as $key => $value){ ?> 
+                                        <option value="<?php echo $value["id_marca"]?>"> 
+                                        <?php echo $value["nombre_marca"]; ?> </option> 
+                                        <?php } ?>
+                            
+                                </select>
+                            </div>      
+                        </div>
+                        <div class="col-lg-4"> 
                         <div class="mb-4">
-                           <label class="form-label" for="val-select2">Marcas </label>
-                            <select class="js-select2 form-select" id="marca" name="editar_marca_producto" style="width: 100%;" >
-                                <option>Seleccione una Marca</option>
-                                  <?php foreach($marcas as $key => $value){ ?> 
-                                    <option value="<?php echo $value["id_marca"]?>"> 
-                                       <?php echo $value["nombre_marca"]; ?> </option> 
+                            <label class="form-label" for="val-select2">Categorias</label>
+                                <select class="form-select valid" id="categoria" name="editar_categoria_producto" style="width: 100%;" >
+                                <option value="">Seleccione una categoria</option>
+                                    <?php foreach ($categorias as $key => $value) { ?>
+                                        <option value="<?php echo $value["id_categoria"]; ?>">
+                                            <?php echo $value["nombre_categoria"]; ?></option>
+                                    <?php } ?> 
+                                
+                                </select>
+                            </div>      
+                        </div>
+                        <div class="col-lg-4">
+                        <div class="mb-4">
+                            <label class="form-label" for="val-select2">Estado</label>
+                                <select class="form-select valid" id="estado" name="editar_estado_producto" style="width: 100%;" >
+                                <option value="">Seleccione el estado</option>
+                                    <?php foreach ($estados as $key => $value) { ?>
+                                        <option value="<?php echo $value["id_estado"]; ?>">
+                                            <?php echo $value["nombre_estado"]; ?></option>
                                     <?php } ?>
-                        
-                            </select>
-                        </div>      
+                                </select>
+                            </div>      
+                        </div>
                     </div>
-                    <div class="col-lg-4"> 
-                    <div class="mb-4">
-                           <label class="form-label" for="val-select2">Categorias</label>
-                            <select class="js-select2 form-select" id="categoria" name="editar_categoria_producto" style="width: 100%;" >
-                            <option value="">Seleccione una categoria</option>
-                                <?php foreach ($categorias as $key => $value) { ?>
-                                    <option value="<?php echo $value["id_categoria"]; ?>">
-                                        <?php echo $value["nombre_categoria"]; ?></option>
-                                <?php } ?> 
-                               
-                            </select>
-                        </div>      
-                    </div>
-                    <div class="col-lg-4">
-                    <div class="mb-4">
-                           <label class="form-label" for="val-select2">Estado</label>
-                            <select class="js-select2 form-select" id="estado" name="editar_estado_producto" style="width: 100%;" >
-                             <option value="">Seleccione el estado</option>
-                                <?php foreach ($estados as $key => $value) { ?>
-                                    <option value="<?php echo $value["id_estado"]; ?>">
-                                        <?php echo $value["nombre_estado"]; ?></option>
-                                <?php } ?>
-                            </select>
-                        </div>      
+                    <div class="row">
+                        <label for="exampleInputFile">Imagen</label>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="subirImagen" name="editar_imagen_producto">
+                                            <label class="custom-file-label" for="exampleInputFile">Seleccione una imagen</label>
+                                        </div>
+                                    </div>
+                                    <img width="100px" height="100px" class="previsualizarImagen" src="" alt="">
                     </div>
                 </div>
-                <div class="row">
-                   <label for="exampleInputFile">Imagen</label>
-                            <div class="input-group">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="subirImagen" name="editar_imagen_producto">
-                                    <label class="custom-file-label" for="exampleInputFile">Seleccione una imagen</label>
-                                </div>
-                            </div>
-                             <img width="100px" height="100px" class="previsualizarImagen" src="" alt="">
-               </div>
-
                 <input type="hidden" class="editar_id_producto" name="editar_id_producto" value=""> 
                 <?php
                  $editar = new ProductosControlador();

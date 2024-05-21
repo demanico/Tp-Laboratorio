@@ -73,7 +73,35 @@ class CategoriasControlador
         }
     }
 
+    static public function ctrEditarCategoria() 
+    {
+        if(isset($_POST["editar_nombre_categoria"]))
+        {
 
+            $categoria = CategoriasControlador::ctrMostrarCategorias("id_categoria", $_POST["editar_id_categoria"]); 
 
+            $datos = array(
+                "nombre_categoria" => $_POST["editar_nombre_categoria"],
+                "id_categoria" => $_POST["editar_id_categoria"] 
+            );
+
+            $tabla = "categorias"; 
+
+            $url = PlantillaControlador::url() . "categorias"; 
+            
+            $respuesta = CategoriasModelo::mdlEditarCategoria($tabla, $datos); 
+
+            if ($respuesta == "ok") {
+                echo '<script>
+                    fncSweetAlert("success","La categoria se modificó correctamente", "' . $url . '"
+                    );
+                    </script>';
+            } else {
+                echo '<script>
+                    fncSweetAlert("error","Error al modificar la categoria", "")
+                    </script>';
+            }
+        }
+    }
 
 } 

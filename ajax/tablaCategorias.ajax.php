@@ -30,7 +30,7 @@ class TablaCategorias
             
                
             //Traemos las acciones
-            $acciones = "<button type='button' class='btn btn-warning btnBoton' data-bs-toggle='modal' data-bs-target='#editar-categoria' tipo='editar' id_categoria = '" . $categorias[$i]["id_categoria"] . "'><i class='fas fa-edit'></i></button> <button type='button' id_categoria = '" . $categorias[$i]["id_categoria"] . "' class='btn btn-danger btnEliminarCategoria'><i class='fas fa-trash'></i></button>";
+            $acciones = "<button type='button' class='btn btn-warning btnBoton' data-bs-toggle='modal' data-bs-target='#editar_categoria' tipo='editar' id_categoria = '" . $categorias[$i]["id_categoria"] . "'><i class='fas fa-edit'></i></button> <button type='button' id_categoria = '" . $categorias[$i]["id_categoria"] . "' class='btn btn-danger btnEliminarCategoria'><i class='fas fa-trash'></i></button>";
 
             $datosJson .= '[
                         "' . $categorias[$i]["nombre_categoria"] . '",

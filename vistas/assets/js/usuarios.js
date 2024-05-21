@@ -82,7 +82,7 @@ $(".tablaUsuarios tbody, .usuarios").on("click", ".btnBoton", function () {
         processData: false,
         dataType: "json",
         success: function (respuesta) {
-            //console.log(respuesta);
+            console.log(respuesta);
             $("#editar-usuario .editar_id_usuario").val(
                 respuesta["id_usuario"]
             );

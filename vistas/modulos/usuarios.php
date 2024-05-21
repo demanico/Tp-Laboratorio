@@ -1,6 +1,5 @@
 <?php
 
-
 $roles = RolesControlador::ctrMostrarRoles(null, null); 
 
 $estados = Funciones::MostrarEstados(null, null); 
@@ -161,13 +160,13 @@ $estados = Funciones::MostrarEstados(null, null);
                     <div class="row justify-content-center mb-4">
                        <div class="col-md-10"> 
                             <label class="form-label" for="val-select2">Estado</label>  
-                            <select class="form-select valid" name="editar_estado_usuario" id="estado" >  
+                            <select class="form-select valid" id="estado" name="editar_estado_usuario">  
                                 <option value="">Seleccione un estado</option> 
-                                <?php foreach ($estados as $key => $value) { ?>
+                                <?php foreach($estados as $key => $value) { ?>
                                 <option value="<?php echo $value["id_estado"]; ?>
                                 "><?php echo $value["nombre_estado"]; ?></option>
                                 <?php } ?>
-                            </select>
+                            </select> 
                         </div> 
                     </div> 
                 </div> 

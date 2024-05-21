@@ -112,47 +112,47 @@ class UsuariosControlador
 }
 
 
-static public function ctrEditarUsuario()
-{
-    if(isset($_POST["editar_nombre_usuario"]))
+    static public function ctrEditarUsuario()
     {
+        if(isset($_POST["editar_nombre_usuario"]))
+        {
 
-        $usuario = UsuariosControlador::ctrMostrarUsuarios("id_usuario", $_POST["editar_id_usuario"]);
-        // Verificamos si se proporcionó una nueva contraseña
-        if (!empty($_POST["editar_password_usuario"])) {
-            $password = crypt($_POST["editar_password_usuario"], '$2a$07$hdgfamkdhdshsjhduaostyexdj$');
-        } else {
-            // Si no se proporciona una nueva contraseña, mantenemos la contraseña actual
-            $password = $usuario["password_usuario"];
-        }
+            $usuario = UsuariosControlador::ctrMostrarUsuarios("id_usuario", $_POST["editar_id_usuario"]);
+            // Verificamos si se proporcionó una nueva contraseña
+            if (!empty($_POST["editar_password_usuario"])) {
+                $password = crypt($_POST["editar_password_usuario"], '$2a$07$hdgfamkdhdshsjhduaostyexdj$');
+            } else {
+                // Si no se proporciona una nueva contraseña, mantenemos la contraseña actual
+                $password = $usuario["password_usuario"];
+            }
 
-        $datos = array(
-            "nombre_usuario" => $_POST["editar_nombre_usuario"],
-            "email_usuario" => $_POST["editar_email_usuario"],
-            "password_usuario" => $password,
-            "id_rol_usuario" => $_POST["editar_id_rol_usuario"],
-            "estado_usuario" => $_POST["editar_estado_usuario"],
-            "id_usuario" => $_POST["editar_id_usuario"] // Agregamos el ID del usuario
-        );
+            $datos = array(
+                "nombre_usuario" => $_POST["editar_nombre_usuario"],
+                "email_usuario" => $_POST["editar_email_usuario"],
+                "password_usuario" => $password,
+                "id_rol_usuario" => $_POST["editar_id_rol_usuario"],
+                "estado_usuario" => $_POST["editar_estado_usuario"],
+                "id_usuario" => $_POST["editar_id_usuario"] // Agregamos el ID del usuario
+            );
 
-        $tabla = "usuarios";
+            $tabla = "usuarios";
 
-        $url = PlantillaControlador::url() . "usuarios";
-        
-        $respuesta = UsuariosModelo::mdlEditarUsuario($tabla, $datos);
+            $url = PlantillaControlador::url() . "usuarios";
+            
+            $respuesta = UsuariosModelo::mdlEditarUsuario($tabla, $datos);
 
-        if ($respuesta == "ok") {
-            echo '<script>
-                fncSweetAlert("success","El usuario se modificó correctamente", "' . $url . '"
-                );
-                </script>';
-        } else {
-            echo '<script>
-                fncSweetAlert("error","Error al modificar el usuario", "")
-                </script>';
+            if ($respuesta == "ok") {
+                echo '<script>
+                    fncSweetAlert("success","El usuario se modificó correctamente", "' . $url . '"
+                    );
+                    </script>';
+            } else {
+                echo '<script>
+                    fncSweetAlert("error","Error al modificar el usuario", "")
+                    </script>';
+            }
         }
     }
-}
 
 
 

@@ -31,7 +31,7 @@ $(".tablaCategorias").DataTable({
 
 
 $(".tablaCategorias tbody, .categorias").on("click", ".btnBoton", function () {
- let id_categoria = $(this).attr("idCategoria"); 
+ let id_categoria = $(this).attr("id_categoria"); 
  let tipo = $(this).attr("tipo");
  
  console.log(id_categoria);  
@@ -55,11 +55,11 @@ $(".tablaCategorias tbody, .categorias").on("click", ".btnBoton", function () {
      processData: false,
      dataType: "json",
      success: function (respuesta) {
-         //console.log(respuesta);
+         console.log(respuesta);
          $("#editar-categoria .editar_id_categoria").val(
              respuesta["id_categoria"]
          );
-         $("#editar-usuario .nombre-categoria").val( 
+         $("#editar-categoria .nombre_categoria").val( 
              respuesta["nombre_categoria"]
          );
 
